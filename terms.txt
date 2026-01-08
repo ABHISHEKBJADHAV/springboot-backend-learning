@@ -1,0 +1,159 @@
+Spring IoC
+
+AOP, Cross cutting concerns
+https://docs.spring.io/spring-framework/reference/core/aop.html
+JoinPoint, PointCut in AOP
+OWASP Top 10
+Spring Security layer comes before Dispatcher servlet
+Client -> Spring Security -> Servlet -> Controllers
+Filter chain in Spring Security
+
+What is Jshell in short?
+
+Cryptography
+Symmetric and Asymmetric
+public, private key 
+
+JWT - When site is secured for all requests with urls e.g. /getJobPosts, /postJob/ /getJobPost/1 etc. everytimeyou will need to insert username and password for each request. JWT is just like giving pass to particular user for some amount of time so that by showing that pass user can access all. Pass contains signature. 
+
+Watch "JWT summary" video from Udemy.
+
+Note: 
+SecretKey is a cryptographic key used to:
+1) Sign a JWT (when creating it)
+2) Verify a JWT (when receiving it)
+In real world secretKey like a stamp seal
+So generate it once while development
+
+What is :: (Double Colon) ?
+This is called a Method Reference in Java.
+Claims::getSubject   is equivalent to   claims -> claims.getSubject()
+
+
+private <T> T extractClaim(String token, Function<Claims, T> claimResolver)
+What is <T> T ?
+This is Java Generics.
+This means:
+<T> → T is a placeholder type
+T can be String, Date, Integer, anything
+
+    public String extractUserName(String token) {
+        // extract the username from jwt token
+        return extractClaim(token, Claims::getSubject);
+    }
+
+    private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimResolver.apply(claims);
+    }
+
+Here, Claims::getSubject means  claims -> claims.getSubject()
+and argument    Function<Claims, T> claimResolver   means claimResolver is Function that takes Single argument of Type claims and return object of Type T.
+Here since Claims is interface then you will wonder who is responsible for getSubject methods implementation then external libs are responsible for that.
+
+while creation GitHub OAuth2 it asked for checkbox "Enable Device Flow" that is required for Devices without browsers like TV,IOT devices... etc
+
+Virtual Machine (VM) :- If you want to run Linux as Guest OS or Vitual OS in windows then to run any os here in our Case we want to run Linux then we need Hardwares to run that OS. So you have to fake it and VM is fake hardware provided by windows to run Linux.
+
+Docker - Think like it's a big ship and Containers are containers kept on it
+Docker Image reference structure - 
+[registry]/[repository]:[tag] -> docker.io/library/hello-world:latest
+Registry: Where the image is stored (default is Docker Hub).
+Repository: The project or namespace (e.g., library/hello-world).
+Tag: Version or variant (e.g., latest, 1.25).
+Note : docker.io/library/hello-world:latest is unique but hello-world is not
+Image ID is unique
+Run comand -> docker help
+Whenever you run container container id is generated that's new everytime but Whenever you pull image from docker then that image id is always same
+Client talks to docker. Docker contains Daemon(Processor) which manages images,containers,volumes,..etc.
+Which are components of Docker?
+-it : interactive mode
+-dit : ditach mode
+
+https://github.com/teluskoOrg/Docker-Source-Code/blob/main/Running_SpringBoot_App_On_Docker.md
+
+docker run -p 8081:8081 telusko/rest-demo:v2
+here, -p <port_on_your_machine> : <port_inside_container/Tmcat_port>
+
+https://github.com/teluskoOrg/Docker-Source-Code/tree/main
+
+Try to create Image and push it on Docker Hub So that Anyone can use it in world.
+
+Search for 12-Factor App (Microservices/Cloud Native/Cloud First)
+
+Instead of @Autowired Can we use constructor injection
+
+
+public interface CrudRepository<T, ID> extends Repository<T, ID> {
+    <S extends T> S save(S entity);
+}
+The angle brackets <> define generic types.
+Generics allow you to write code that works with different data types without rewriting the same logic.
+S extends T -> extends T means "S must be a subtype of T (or T itself)."
+
+
+GeneratedValue -> strategies
+
+@JoinTable -> Creates new table
+@JoinColumn -> creates foreign key column in table in case of ManyToOne but in case of ManyToMany it becomes column of new table
+
+
+@GetMapping("/create")
+public String createQuiz(
+    @RequestParam String category, // required
+    @RequestParam(required = false, defaultValue = "5") Integer noOfQues,
+    @RequestParam(required = false) String quizName
+) {
+    return "Category=" + category + ", noOfQues=" + noOfQues + ", quizName=" + quizName;
+}
+
+category:- must always be present, otherwise Spring throws an error.
+noOfQues:- defaults to 5 if missing.
+quizName:- can be null if missing. 
+
+@Entity
+@Data
+public class Question {
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    private String name;
+
+    @ElementCollection
+    @CollectionTable(
+        name = "question_options",
+        joinColumns = @JoinColumn(name = "question_id")
+    )
+    @Column(name = "option_text")
+    private List<String> options;
+}
+
+
+    @ManyToMany
+//    @JoinTable(
+//            name = "quizz_question_map_table",
+//            joinColumns = @JoinColumn(name = "quizz_id"),
+//            inverseJoinColumns = @JoinColumn(name = "question_id")
+//    )  // Not neccessary use only if you want to customize Join table name etc.
+    private List<Question> questions;
+
+If you set nativeQuery = true, you’re telling Spring:
+“This is a native SQL query, run it directly against the database.”
+It means you can use database-specific functions (like RANDOM() in Postgres, LIMIT, joins, etc.) that JPQL doesn’t support.
+
+
+What @ Means in Spring
+In Java, @ introduces an annotation.
+Annotations are metadata attached to classes, methods, fields, or parameters.
+
+
+Microservices - 
+RestTemplate uses and disadvantages
+Feign, OpenFeign
+Interaction between services - Eureka client, Eureka Server
+Suppose we have multiple services like question-service, quizz-service
+Then question-service and quizz-service will use Eureka client so they will be client of Eureka server and Those services must register themself to Eureka server.
+Feign client - Will take care about load balancing
+Api gateway
+

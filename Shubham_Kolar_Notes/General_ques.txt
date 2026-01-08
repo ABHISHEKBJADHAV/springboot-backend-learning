@@ -1,0 +1,204 @@
+What goes into heap and stack memory in Java? Provide a code example.
+
+What is a final method in Java?
+
+Can a constructor be declared final? Why or why not?
+
+What are the different ways to create a String in Java?
+
+Difference between String literal and using new String()?
+
+Which is better for memory: literal or heap string creation? Why?
+
+Difference between StringBuffer and StringBuilder?
+
+What does "thread-safe" mean in Java (e.g., in StringBuffer)?
+
+Write code to merge two unsorted arrays and sort the result.
+
+How to use a Comparator to sort in reverse order?
+
+Difference between == and .equals() in object comparison?
+
+What is immutability? Why is String immutable in Java?
+
+What are wrapper classes in Java and why are they used?
+
+Explain autoboxing and unboxing with examples.
+
+What is the transient keyword and when is it used?
+
+what is the disadvantage of parallel stream?
+
+How can you achieve thread safety while using parallel stream?
+
+*Question* : Two threads are trying to access two shared resources in reverse order. How can deadlock occur and how will you resolve it?
+
+*Question* : You created a fixed thread pool of size 3 but submitted 10 long-running tasks. What will happen and how do you design this better?
+
+*Question* : You have a shared counter variable accessed by multiple threads. Sometimes it gives incorrect results. What is the issue and how do you fix it?
+
+*Question* : Implement a producer-consumer scenario using wait/notify where one thread prints odd numbers and the other prints even numbers alternatively.
+
+*Question* : You are iterating over a HashMap and modifying it at the same time in a multi-threaded environment. Sometimes you get ConcurrentModificationException, sometimes not. Why?
+
+*Question* : You used a HashMap in a multi-threaded application and got inconsistent behavior. What is the problem and what should be used instead?
+
+*Question* : You have a list with millions of entries and duplicates. What is the most efficient way to remove duplicates while preserving insertion order?
+
+*Question* : You need to sort a list of employees by salary in descending order and by name (ascending) if salaries are equal. How would you do that?
+
+What is ExecutorService in Java?
+
+How can ExecutorService be implemented?
+
+What types of thread pools are supported in the Executor framework?
+
+How does ExecutorService compare with manually creating threads?
+
+What are the different ways to create a thread in Java?
+
+Which thread creation approach is preferable and why?
+
+What is synchronization in Java and how does it work internally?
+
+What is the difference between a synchronized block and a synchronized method?
+
+What are object-level and class-level locks, and how do they help in synchronization?
+
+What is reentrant locking and what are its advantages?
+
+What are race conditions and deadlocks in multithreading?
+
+What are wait(), notify(), and notifyAll() in Java?
+
+What are the different stages in a thread's life cycle?
+
+Can a terminated thread be restarted? What happens if we try to do so?
+
+What is the difference between sleep() and wait()?
+
+When should join() and yield() be used?
+
+What is the difference between Runnable and Callable?
+
+What is a Future object in Java?
+
+What are some examples of functional interfaces like Runnable and Callable?
+
+How can deadlocks be avoided in Java?
+
+What happens if the run() method is called directly on a thread?
+
+How can a static method be synchronized in Java?
+
+How is inter-thread communication achieved in Java, such as in the Producer-Consumer problem
+
+Intellect design arena: 
+
+Which version of java used in project and then below questions: 
+
+Java 8 features 
+
+Working of streams 
+
+Array list default size and why
+
+Map default size
+
+Internal working of map 
+
+Null key and value in hashmap 
+
+Hashmap vs concurrent Hashmap 
+
+Why optional class
+
+Null key and value allowed in concurrent Hashmap ?
+
+Functional interface and lambda why came
+
+Sort list of fruits  in dictionary order using streams
+
+Calculate the average age of a list of Person objects using Java streams.
+
+Find the longest string in a list of strings using Java streams.
+
+Check if a list of integers contains a prime number using Java streams.
+
+Find the frequency of each word in a list of strings using Java streams.
+
+Remove duplicates from a list while preserving the order using Java streams.
+
+Merge two sorted lists into a single sorted list using Java streams.
+
+Find the intersection of two lists using Java streams.
+
+Given a list of transactions, find the sum of transaction amounts for each day using Java streams.
+
+Find the kth smallest element in an array using Java streams.
+
+Group a list of employees by their department using Java streams.
+
+Partition a list of numbers into even and odd using Java streams.
+
+Convert a list of strings to uppercase and sort them using Java streams.
+
+Find the first non-repeating character in a string using Java streams.
+
+Determine the maximum salary from a list of employee objects using Java streams.
+
+Count the number of elements in a list that start with a specific letter using Java streams.
+
+Convert a list of objects to a Map using a specific field as the key using Java streams.
+
+Flatten a list of lists into a single list using Java streams.
+
+Find all palindromes in a list of strings using Java streams.
+
+Check if all elements in a list match a given predicate using Java streams.
+
+Skip the first n elements and limit to m elements using Java streams.
+
+*Streams Coding Questions - Based on Recent interviews attended by my learners.*
+
+*Beginner (Easy)*
+Convert a list of strings to uppercase and sort them using Java streams.
+
+Remove duplicate elements from a list while maintaining insertion order using Java streams.
+
+Count how many strings in a list begin with a specific letter using Java streams.
+
+Skip the first n elements and limit the stream to the next m elements using Java streams.
+
+Check whether all elements in a list satisfy a given condition using Java streams.
+
+Check if any element in a list of integers is a prime number using Java streams.
+
+Identify the longest string in a list using Java streams.
+
+Partition a list of integers into even and odd groups using Java streams.
+
+*Intermediate*
+Find all palindrome strings from a list using Java streams.
+
+Convert a list of objects into a Map, using a specific field as the key, via Java streams.
+
+Calculate the frequency of each word in a list of strings using Java streams.
+
+Flatten a list of lists into a single list using Java streams.
+
+Determine the maximum salary from a list of Employee objects using Java streams.
+
+Group a list of Employees by their department using Java streams.
+
+Find the intersection of two lists using Java streams.
+
+*Advanced (Hard)*
+Find the first non-repeating character in a string using Java streams.
+
+Merge two sorted lists into one sorted list using Java streams.
+
+Retrieve the k th smallest element in an array using Java streams.
+
+Aggregate transaction amounts by date from a list of transactions using Java streams.

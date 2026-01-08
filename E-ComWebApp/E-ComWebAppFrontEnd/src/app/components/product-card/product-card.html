@@ -1,0 +1,27 @@
+<mat-card class="product-card" appearance="outlined">
+  <mat-card-header class="card-header">
+    <mat-card-title class="card-title">{{ product.name }}</mat-card-title>
+    <mat-card-subtitle class="card-subtitle">{{ product.brand }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <div class="card-body-container">
+    <div class="product-img-box" (click)="showDetails()">
+      <img [src]="'data:' + product.imageType + ';base64,' + product.imageData" [alt]="product.name"
+        class="product-img" />
+    </div>
+
+    <mat-card-content class="product-details-box" (click)="showDetails()">
+      <p class="product-stock"
+        [ngClass]="{ 'out-of-stock': !product.productAvailable, 'in-stock': product.productAvailable }">
+        {{ product.productAvailable ? ' Available' : 'Out of stock' }}
+      </p>
+      <p class="product-price"><strong>Price:</strong> {{ product.price | currency:'INR' }}</p>
+    </mat-card-content>
+
+    <mat-card-actions class="product-cart-btn-box">
+      <button mat-button color="primary" (click)="addToCart()" [disabled]="!product.productAvailable">
+        Add to Cart
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

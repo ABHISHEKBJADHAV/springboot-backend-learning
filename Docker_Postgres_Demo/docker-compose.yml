@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - abhi-network
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: abhishek
+      POSTGRES_PASSWORD: a@123
+      POSTGRES_DB: studentDb
+    ports:
+      - "5433:5432"
+    networks:
+      - abhi-network
+    volumes:
+      - postgres-s-data:/var/lib/postgres/data
+
+networks:
+  abhi-network:
+    driver: bridge
+
+volumes:
+  postgres-s-data:

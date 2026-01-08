@@ -1,0 +1,9 @@
+package com.example.QuizzAppMonolithic.model.dto;
+
+public record QuizzQuestion(
+        int id,
+        String questionTitle,
+        String option1,
+        String option2,
+        String option3,
+        String option4) { }

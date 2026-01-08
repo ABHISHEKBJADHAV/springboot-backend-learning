@@ -1,0 +1,12 @@
+1)
+Maven
+Plugins
+bean scopes
+DI - 1)Field Injection 2)Constructor Injection 3) Setter Injection 
+
+Dispatcher-servlet :- Front controller that sends request to other controllers 
+
+@Controller vs @RestController
+@CrossOrigin
+
+Jackson library - Spring uses default to convert Java objects into JSON

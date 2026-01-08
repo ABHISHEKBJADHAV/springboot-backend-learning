@@ -1,0 +1,53 @@
+.outer-form-comtainer {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .image-upload-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+
+      label {
+        font-weight: 500;
+        color: #555;
+      }
+
+      input[type="file"] {
+        border: 1px solid #ccc;
+        padding: 8px;
+        border-radius: 4px;
+        background-color: #fff;
+      }
+    }
+
+    mat-slide-toggle {
+      margin-top: 12px;
+    }
+
+    button[type="submit"] {
+      align-self: flex-start;
+      margin-top: 20px;
+    }
+  }
+}

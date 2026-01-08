@@ -1,0 +1,101 @@
+Questions from multiple interviews...
+
+*Scenario* : You have a large application with hundreds of Spring beans. One day, a new developer accidentally creates two beans of the same type.
+*Q* : How will Spring handle this situation, and how can you resolve bean conflict in such scenarios?
+
+*Scenario* : You want to create a singleton bean that behaves differently for each user session.
+*Q* : How can you configure a Spring bean to be session-scoped in a web application?
+
+*Scenario* : A service class has three dependencies. One is required, and two are optional.
+*Q* : How will you inject dependencies such that the service still works if optional dependencies are missing?
+
+*Scenario* : A user submits a form, but you want to validate the input at the controller layer and return custom error messages without showing a generic 500 error.
+*Q* : How can you handle form validation and custom error display in Spring MVC?
+
+*Scenario* : You want to pass data from a controller to a JSP page.
+*Q* : What are the differences between Model, ModelMap, and ModelAndView? Which one will you use and why?
+
+*Scenario* : You want to handle different versions of an API like /api/v1/users and /api/v2/users.
+*Q* : How do you manage versioning in Spring MVC?
+
+*Scenario* : Your application has different user roles – ADMIN and USER. Some endpoints must be accessible only to admins.
+*Q* : How will you implement role-based access control in Spring Security?
+
+*Scenario* : You want to store a JWT token on the frontend and validate it on each request.
+*Q* : How will you configure Spring Security to work with JWT-based stateless authentication?
+
+*Scenario* : Your application works fine locally but fails on deployment with a port conflict.
+*Q* : How can you configure dynamic or environment-based port management in Spring Boot?
+
+*Scenario* : You want to monitor the health, metrics, and status of your Spring Boot app.
+*Q* : What tools or features in Spring Boot can help with application monitoring and health checks?
+
+*Scenario* : Your microservice depends on a downstream service that sometimes goes down.
+*Q* : How will you use Spring Cloud or Spring Boot features to handle failures gracefully?
+
+*Scenario* : You want to write unit tests for a service class without loading the full application context.
+*Q* : How can you test Spring components efficiently using mocks?
+
+*Scenario* : You have multiple profiles (dev, test, prod).
+*Q* : How will you test code under different profiles using Spring?
+
+*Scenario* : A query is taking too long, and you suspect it is due to fetching too much data.
+*Q* : How can you optimize your repository method using @Query and fetch strategies?
+
+*Scenario* : You need to create a dynamic query based on optional search parameters.
+*Q* : How will you implement this using Spring Data JPA?
+
+
+HCL First Round:
+
+self introduction
+
+thread in how many ways to create 
+
+exceptions checked and unchecked how to handle in spring boot local & global
+
+functional interface and lambda with code example
+
+input int val = 12340000; output 1234
+
+String val = "abcaabca"; --> frequent accurance
+
+create integer array and sort in desc using streams
+
+few more questions in collections
+
+IBM INTERVIEW QUESTIONS For  4 Years Exp
+1.What is concurrent modification exception?
+2.How to overcome for concurrent modification exception?
+3.what is copyonwritearraylist?
+4.linkedhashset and treehashset difference
+5.what is checked and unchecked exception?
+6.contract between hashcode and equals
+7.You have an Employee class with name, age, and email.You’re storing Employee objects in a TreeSet.
+Employee1 and Employee3 are same
+Employee2 is different
+What will be the size of the TreeSet?
+8.HashMap<Integer, String> hashmap = new HashMap<>();
+hashmap.put(1, "abc");
+hashmap.put(1, "xyz");
+
+System.out.println(hashmap.get(1));
+
+What will be the output?
+9.terminal and intermediate operation difference in java 8?
+10.map and flat map difference 
+11.internal working of hashmap
+12.code-exclude first two and last two elements from array and from remaining one find the odd numbers from that .
+13.what is optional class?
+14.Can we make optional class final?
+15.@qualifier and @primary difference
+16.@transactional 
+17.@pathvariable and @requestparam
+18.coding- there is one array and from that array need to pick up two integers and their sum should be 7.
+19.write employee repository in jpa
+20.what interface should use in JPA
+21.can we Use @component in place of @ service and why?
+22.what is api gateway?
+23.put and patch difference
+24.circut breaker pattern
+25.if our api gateway is down then what we can do?

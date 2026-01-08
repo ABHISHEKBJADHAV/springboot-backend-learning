@@ -1,0 +1,38 @@
+<div class="product-info-container">
+  <h2>Product Details</h2>
+
+  <div *ngIf="product !== undefined; else loading" class="product-details-wrapper">
+    <!-- Left: Product Image -->
+    <div class="product-image-section">
+      <img [src]="'data:' + product.imageType + ';base64,' + product.imageData" alt="{{ product.name }}"
+        class="product-image" />
+    </div>
+
+    <!-- Right: Product Info -->
+    <div class="product-text-section">
+      <h3 class="product-name">{{ product.name }}</h3>
+      <div class="product-brand">{{ product.brand }}</div>
+      <div><strong>Description:</strong> {{ product.description }}</div>
+      <div><strong>Category:</strong> {{ product.category }}</div>
+      <div><strong>Release Date:</strong> {{ product.releaseDate | date:'mediumDate' }}</div>
+      <div>
+        <strong>Availability:</strong>
+        <span [ngClass]="{ 'out-of-stock': !product.productAvailable, 'in-stock': product.productAvailable }">
+          {{ product.productAvailable ? 'Available' : 'Out of Stock' }}
+        </span>
+      </div>
+      <div><strong>Stock Quantity:</strong> {{ product.stockQuantity }}</div>
+      <div><strong>Price:</strong> {{ product.price | currency:'INR' }}</div>
+
+      <div class="product-actions">
+        <button mat-raised-button color="primary" routerLink="/">Back to Home</button>
+        <button mat-raised-button color="accent" (click)="updateProduct()">Update Product</button>
+        <button mat-raised-button color="accent" (click)="deleteProduct()">Remove Product</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <div>Loading product information...</div>
+  </ng-template>
+</div>

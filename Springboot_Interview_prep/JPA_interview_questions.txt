@@ -1,0 +1,57 @@
+Imagine your lead developer asks you to fix an N+1 issue in a repository method that fetches a list of Orders and their associated Customer.
+If you were using a Spring Data JPA Repository, which of these approaches would you suggest to fix it in a single database call?
+Change FetchType.LAZY to FetchType.EAGER in the Entity.
+Use the @Query annotation with a JOIN FETCH clause in the repository.
+Manually write a loop to fetch customers by ID and store them in a Map.
+
+Youtube - https://www.youtube.com/watch?v=VinaIqZHaBU&t=36s
+1) When using `@Transactional`, you notice that the changes are not reflecting in the database. What could be the reason?
+
+1. Missing `@Transactional` Proxy (Self-Invocation Issue)
+
+2. Incorrect Transaction Propagation
+3. No Exception Thrown (Transaction Not Rolled Back)
+Scenario: File or I/O Error in a Transaction
+4. Database Flush Not Triggered
+5. Incorrect Isolation Level
+6. Read-Only Transaction
+
+7. Improper Spring Transaction Configuration
+If changes are not reflecting in the database despite using `@Transactional`, check the following:
+
+✅ Are you calling the transactional method from another bean? (Proxy issue)
+ ✅ Is the correct transaction propagation used? (`Propagation.REQUIRED`)
+ ✅ Are checked exceptions preventing rollback? (`rollbackFor = Exception.class`)
+ ✅ Is Hibernate flushing the session properly? (`flush()`)
+ ✅ Is the transaction isolation level appropriate? (`Isolation.READ_COMMITTED`)
+ ✅ Is `@Transactional(readOnly = true)` mistakenly set?
+ ✅ Is Spring transaction management enabled? (`@EnableTransactionManagement`)
+
+
+2) You have an entity with a `@GeneratedValue(strategy = GenerationType.AUTO)`, but while inserting records, IDs are not generating sequentially. Why?
+
+N+1 Query Problem - Scenario-Based Interview Answers
+#### Q1: What is the N+1 Query Problem?
+👉 Answer:
+ The N+1 Query Problem happens when Hibernate or JPA executes one query to fetch the parent entities (N) and then executes N separate queries to fetch the associated child entities.
+
+Key Takeaways
+✅ N+1 Query Problem happens when multiple queries fetch related entities lazily.
+ ✅ Best Fix: Use `JOIN FETCH` or Entity Graphs to load all data in one query.
+ ✅ Alternative Fixes: Use `@BatchSize` or `@Fetch(FetchMode.SUBSELECT)` if you can't modify queries.
+
+
+
+#### Q3: How would using `@BatchSize` or `@Fetch(FetchMode.SUBSELECT)` improve performance?
+👉 Answer:
+ If you cannot modify queries directly (e.g., using `JOIN FETCH`), Hibernate provides two batch fetching strategies:
+
+Soft Delete Implementation in JPA/Hibernate
+📌 What is Soft Delete?
+Soft delete means marking a record as inactive instead of physically deleting it from the database. This is useful when you need to retain historical data or recover deleted records.
+
+📌 Key Takeaways
+✅ Soft Delete is implemented using a boolean flag (`isDeleted`) instead of removing records.
+ ✅ Use `@Where(clause = "is_deleted = false")` to automatically exclude deleted entities.
+ ✅ Use `@SQLDelete` to override the delete query and mark records as deleted instead of removing them.
+ ✅ Be aware of caching issues, cascading deletes, and `JOIN` queries that may still fetch deleted data.

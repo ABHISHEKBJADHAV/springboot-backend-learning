@@ -1,0 +1,33 @@
+<div class="job-table-container">
+    <h2 class="job-table-title">Job Posts</h2>
+    <input type="text" placeholder="Search jobs..." [(ngModel)]="searchTerm" (input)="onSearch()"
+        class="search-input" />
+    <table class="job-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Profile</th>
+                <th>Description</th>
+                <th>Experience</th>
+                <th>Tech Stack</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let job of jobPosts">
+                <td>{{ job.postId }}</td>
+                <td>{{ job.postProfile }}</td>
+                <td>{{ job.postDesc }}</td>
+                <td>{{ job.reqExperience }}</td>
+                <td>{{ job.postTechStack.join(', ') }}</td>
+                <td class="action-buttons">
+                    <button class="view-btn" (click)="viewJobDetails(job.postId)">View Post</button>
+                    <button class="update-btn" (click)="goToUpdateJob(job.postId)">Update</button>
+                    <button class="delete-btn" (click)="deleteJob(job.postId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="add-job-btn" (click)="goToAddJob()">Add Job</button>
+</div>

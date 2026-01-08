@@ -1,0 +1,229 @@
+Publicis Sapient Interview Questions:
+
+1. Which different types of API versioning have you used in your project? Are you aware of and what are the disadvantages or advantages of one API versioning compared to other?
+
+
+2. What is serializable?
+
+
+3. What is clonable?
+
+
+4. What is a marker interface?
+
+
+5. What is immutability? How is it achieved?
+
+
+6. What is the use of final variable when it is used in front of a class?
+
+
+7. What does it do when the final keyword is used in front of a method?
+
+
+8. What does it do when the final variable is used in front of a field?
+
+
+9. What are access modifiers?
+
+
+10. Explain all the SOLID principles.
+
+
+11. Explain the internals of HashMap.
+
+
+12. Explain what HashCollision is.
+
+
+13. What exactly happens if I introduce an element with the same hash as an element which already exists in the map?
+
+
+14. What are fail-fast and fail-safe iterators?
+
+
+15. What are the data structures which are fail-safe?
+
+
+16. What are the differences between the linked list and an array list?
+
+
+17. How much time complexity does deletion operation take in a linked list?
+
+
+18. What is the time complexity of deletion in an array list?
+
+
+19. Compare them with respect to insertion operation as well.
+
+
+20. What are functional interfaces?
+
+
+21. What are default and static methods?
+
+
+22. What is a predicate?
+
+
+23. What are bifunctions?
+
+
+24. If I want to send two parameters to a predicate instead of one, how do I do it? Is there a method for it?
+
+
+25. What is optional?
+
+
+26. What is optional.of? What is the usage of it?
+
+
+27. How is optional.ofNullable used? How is it different from optional.of?
+
+
+28. If I pass null value to optional.of, will it throw an exception?
+
+
+29. What are collectors?
+
+
+30. Explain the Saga design pattern.
+
+
+31. Any other design patterns you've used in your project?
+
+
+32. I expect you to know at least 10 design patterns, multiple design patterns.
+
+
+33. What is the executor framework?
+
+
+34. How is it different from manual thread creation?
+
+
+35. What is callable?
+
+
+36. How is it different from runnable?
+
+
+37. What is future?
+
+
+38. Do you know reentrant locks?
+
+
+39. Do you know what atomic keyword is used for?
+
+
+40. What is thread local?
+
+
+41. What is endpoint testing?
+
+
+42. How do you create a docker image?
+
+
+43. How do you containerize your application?
+
+
+44. Explain the process of containerizing your Spring Boot application that you've built.
+
+
+45. How do you use Grafana?
+
+
+46. What is a circuit breaker?
+
+
+47. Where in your project have you used circuit breakers?
+
+
+48. Are you familiar with @Transactional?
+
+
+49. What do you understand by REST?
+
+
+50. Suppose the specific catch block is placed below the generic catch block in a try-catch ladder. Then, will the compiler throw an error, or will it process it, or will it throw you a warning? What will it do?
+
+
+51. What are the different types of versioning that you are familiar with?
+52. Are you familiar with header or query param versioning and URL versioning? What are the advantages and disadvantages compared to them?
+53. Explain the different services of Azure that you have used in your project.
+54. Have you ever mentored a junior?
+55. Have you ever led a team?
+56. Do you know what are the NFRs or Non-Functional Requirements in your project?
+57. Do you take part in designing of the system?
+
+What is Dependency injection? 
+Types of dependency injection.
+how dependency injection removes tight coupling?
+what is tight coupling?
+What are different bean scopes?
+When singleton bean is garbage collected?
+how you are hangling exception in springboot?
+What are filter in springboot ?
+what are different design patterns?
+explain how to make singleton thread safe?
+find first non repeating character in a string using java8 feature?
+
+What are features in Java 8?
+
+What is Optional class?
+
+Predicate and Consumer in Java?
+
+CompletableFuture?
+
+Thread pool – how to create?
+
+Executor thread method?
+
+HashMap – how it works?
+
+JVM working architecture?
+
+Cloning types?
+
+When to use equals() and hashCode()?
+
+Microservice architecture?
+
+Kafka?
+
+Kafka partition and topic?
+
+@Bean and @Component?
+
+203 HTTP method use?
+
+Circuit breaker?
+
+Circuit breaker types?
+
+What is the difference between Microservice Architecture and Monolithic Architecture?
+
+What is the distinction between @Bean and @Component annotations in Spring?
+
+What are Spring Profiles, and how are they used with related annotations?
+
+What are the steps to design a user registration page in Spring Boot?
+
+What is Docker, and how do Docker images work?
+
+How does Kafka function, and what is its architecture?
+
+Can you explain Kafka performance and related follow-up questions?
+
+What are the different types of joins in SQL, and what is the purpose of a Left Join?
+
+Have you worked with indexes in databases? Can you explain their internal workings?
+
+What data structure is used internally for indexing in databases?
+
+Is it possible to perform joins in NoSQL databases?
+
+Can you explain the use of LIMIT and OFFSET in SQL queries?

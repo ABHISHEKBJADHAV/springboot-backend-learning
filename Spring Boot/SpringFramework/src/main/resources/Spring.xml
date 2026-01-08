@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="alien" class="org.example.Alien" autowire="byType">
+<!--        <property name="com" ref="desk"/>-->
+    </bean>
+
+    <bean id="lap" class="org.example.Laptop" primary="true" scope="prototype">
+        <property name="cpu" ref="cpu"/>
+        <property name="cpu1" ref="cpu"/>
+    </bean>
+
+    <bean id="desk" class="org.example.Desktop" lazy-init="true">
+        <property name="cpu" ref="cpu"/>
+    </bean>
+
+
+    <bean id="cpu" class="org.example.CPU" scope="prototype"/>
+
+</beans>

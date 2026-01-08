@@ -1,0 +1,14 @@
+:root {
+  --brand-color: #1976d2;
+  --brand-dark: #145ea8;
+  --muted: #6b7280;
+  --bg: #e08383;
+  --surface: #f7f8fa;
+}
+
+.products-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem;
+}

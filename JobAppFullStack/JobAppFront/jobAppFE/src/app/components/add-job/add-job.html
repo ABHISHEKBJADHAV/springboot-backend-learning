@@ -1,0 +1,23 @@
+<div class="job-form-container">
+  <h2>Add Job Post</h2>
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <label>Post ID:</label>
+    <input type="number" formControlName="postId" /><br />
+
+    <label>Profile:</label>
+    <input type="text" formControlName="postProfile" /><br />
+
+    <label>Description:</label>
+    <textarea formControlName="postDesc"></textarea><br />
+
+    <label>Required Experience:</label>
+    <input type="number" formControlName="reqExperience" /><br />
+
+    <label>Tech Stack:</label>
+    <select formControlName="postTechStack" multiple>
+      <option *ngFor="let tech of techOptions" [value]="tech">{{ tech }}</option>
+    </select><br />
+
+    <button type="submit" [disabled]="jobForm.invalid">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+<div class="outer-container">
+  <nav class="home-navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-brand">
+      <img src="assets/icons/E-Com.png" alt="E‑Com logo" class="nav-logo" />
+    </div>
+
+    <div class="nav-actions">
+      <div class="search-group" role="search">
+        <div class="search-wrapper">
+          <input type="text" class="search-input" [(ngModel)]="searchTerm" placeholder="Search products..."
+            aria-label="Search products" />
+          <button *ngIf="searchTerm" class="clear-btn" (click)="clearSearch()">✖</button>
+        </div>
+        <button type="button" class="search-btn" (click)="searchProduct()">Search</button>
+      </div>
+      <div class="add-product-box">
+        <button class="add-product-btn" (click)="navigateToAddProduct()">Add Product</button>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

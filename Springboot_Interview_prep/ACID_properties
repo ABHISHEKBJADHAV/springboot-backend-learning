@@ -1,0 +1,59 @@
+ACID Properties (Database Transactions)
+
+ACID ensures that a transaction is processed reliably.
+
+1️⃣ A – Atomicity
+
+Meaning:
+Transaction is all or nothing.
+
+Example:
+You transfer ₹1000 from Account A to B.
+	•	Debit A ✔️
+	•	Credit B ❌ (failed)
+
+Then Debit A is rolled back → No partial update.
+
+Either both happen or none happen.
+
+⸻
+
+2️⃣ C – Consistency
+
+Meaning:
+After transaction, database must be in a valid state.
+
+Example:
+If rule is: Total balance of bank = constant
+
+After money transfer, total balance remains same → consistent state
+
+No rule violation allowed.
+
+⸻
+
+3️⃣ I – Isolation
+
+Meaning:
+Multiple transactions execute independently.
+
+Example:
+While you are transferring money, another user checking balance
+should not see half-completed data.
+
+They either see:
+	•	before transaction
+	•	or after transaction
+not in between
+
+⸻
+
+4️⃣ D – Durability
+
+Meaning:
+Once committed, data is permanently saved.
+
+Example:
+After successful transfer, even if power fails, data is safe.
+
+Search more on ChatGpt for @Transactional with example to understand more

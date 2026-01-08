@@ -1,0 +1,35 @@
+🧑‍💼 1. “Tell me about yourself”
+
+I’m Abhishek Jadhav, a backend-focused software engineer with 3 years of total experience.
+I currently work at KPIT Technologies where I’ve worked on backend development using Java and Spring Boot, along with frontend exposure in Angular and some AWS cloud work and I am certified AWS Cloud practitioner.
+I enjoy solving problems, I have solved over 550+ leetcode problems and participated in coding competitions. improving system design skills, and I’m now looking for a role where I can contribute more deeply as a backend engineer and grow technically.
+
+2. “Why are you looking for a change?”
+I’ve learned a lot at my current company, I want to move into a position and projects besides from automotive domain and would like work with different database and codebase.
+I’m looking for better technical growth, challenging backend problems, and an environment where I can specialize and improve as a backend engineer.
+
+3. “What are your strengths?”
+My biggest strength is problem-solving and strong fundamentals in Java, data structures, and backend development.
+I understand errors, exceptions and where to dive into if occurs easily.
+I’m consistent, quick to learn, and I take ownership of my work. I also actively build projects outside office work to strengthen my backend skills.
+
+4. “What are your weaknesses?”
+Earlier, I used to focus on completing tasks alone, but now I actively ask for feedback and collaborate more with the team.
+This has helped me improve both my technical quality and communication.
+
+5. “Why should we hire you?”
+I have strong academics not only in B.Tech also in SSC, HSC etc. I have been learning computer science since 11th Standard and always stays updated with latest technologies.
+
+6. “Describe a challenging problem you solved” ?
+In one of my projects, I implemented JWT-based authentication with Spring Security.
+Initially, handling token validation and filter ordering caused issues, but after debugging the security filter chain and understanding Spring’s request flow, I fixed the issue and stabilized authentication across services.
+This improved both security and performance.
+
+7. “What are your salary expectations?”
+Based on my experience, skills, and current market standards for backend developers, I’m expecting something in the range of 10–12 LPA, but I’m open to discussion based on the role and responsibilities.
+
+8. “Where do you see yourself in 3–5 years?”
+May be working on building AI models.
+
+9. “Do you have any questions for us?”
+What kind of backend challenges would I work on?

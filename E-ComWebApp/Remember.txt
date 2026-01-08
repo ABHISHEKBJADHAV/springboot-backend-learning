@@ -1,0 +1,103 @@
+See what is - 
+
+Blob in Angular
+@Lob, @RequestPart in Spring
+MultiPartFile in Spring
+
+Why Use Blob?
+Because FormData.append() expects either a string, a file, or a Blob.
+Wrapping JSON in a Blob ensures it’s treated as a separate part in the multipart request — exactly what your backend expects with @RequestPart Product.
+
+auto-commit error while returning large objects. While returning LOB(Large Objects) operations. While reading byte[] image from @Lob
+One application property to fix that
+
+DTO - Data Transfer Object
+When we want to send a data to client (Not directly Entity i.e. table) and back from client we need DTO
+
+records in Java - 
+public record Product(String name, double price) {}
+
+@Entity(name = "orders")
+@FetchType
+
+-----------------------------------------------------------------------------------------------------------
+Relations - 
+
+1. One-to-One (@OneToOne)
+Definition: One entity is associated with exactly one other entity.
+Example: Each User has one Profile.
+
+@Entity
+public class User {
+    @Id
+    private Long id;
+
+    @OneToOne
+    private Profile profile;
+}
+
+
+2. One-to-Many (@OneToMany)
+Definition: One entity is associated with many other entities.
+Example: A Category has many Products.
+
+@Entity
+public class Category {
+    @Id
+    private Long id;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
+}
+
+@Entity
+public class Product {
+    @ManyToOne
+    private Category category;
+}
+
+
+
+3. Many-to-One (@ManyToOne)
+Definition: Many entities are associated with one entity.
+Example: Many Orders belong to one Customer. Also you can refer above Product example.
+
+@Entity
+public class Order {
+    @ManyToOne
+    private Customer customer;
+}
+
+
+4. Many-to-Many (@ManyToMany)
+Definition: Many entities are associated with many other entities.
+Example: A Student can enroll in many Courses, and each Course can have many Students.
+
+@Entity
+public class Student {
+    @ManyToMany
+    private List<Course> courses;
+}
+
+@Entity
+public class Course {
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students;
+}
+
+------------------------------------------------------------------------------------------------------
+
+@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+private List<OrderItem> orderItems;
+
+
+@Entity(name = "Orders")
+public class Order {
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)    
+    private List<OrderItem> orderItems;
+}
+
+// Here note that 'o' is small of "order" because it refers to the exact field name in the OrderItem class
+
+

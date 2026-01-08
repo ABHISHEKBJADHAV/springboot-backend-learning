@@ -1,0 +1,7 @@
+<div class="job-card" *ngIf="job">
+    <h2>{{ job.postProfile }}</h2>
+    <p><strong>ID:</strong> {{ job.postId }}</p>
+    <p><strong>Description:</strong> {{ job.postDesc }}</p>
+    <p><strong>Experience Required:</strong> {{ job.reqExperience }} years</p>
+    <p><strong>Tech Stack:</strong> {{ job.postTechStack.join(', ') }}</p>
+</div>

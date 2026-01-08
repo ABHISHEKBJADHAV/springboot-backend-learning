@@ -1,0 +1,31 @@
+Object: Any instance of a class created in Java using the new keyword or similar. Manged by programmer.
+Bean: An object managed by the Spring IoC (Inversion of Control) container. Managed by Spring.	
+
+ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+or
+ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+Basically this is IOC container and when we create that at that time only bean is created.
+When scope is singleton(default scope) then While container loading at that time only bean created but when scope is prototype then it not creates bean while loading IOC container.
+
+DI(Dependency Injection): Laptop class is depends on CPU class. Both objects/Beans would be in IOC container. Need to use DI to inject that.
+Conventionally we do - 
+class Laptop {
+    private CPU cpu = new CPU(); // Hard-coded
+}
+
+With Spring and DI It's - 
+@Component
+class Laptop {
+    private CPU cpu;
+
+    @Autowired
+    public Laptop(CPU cpu) { // Constructor injection
+        this.cpu = cpu;
+    }
+}
+
+@Component
+class CPU {}
+
+
+
