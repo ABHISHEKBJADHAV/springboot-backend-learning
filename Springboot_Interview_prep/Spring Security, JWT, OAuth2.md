@@ -1,47 +1,47 @@
-Out of all REST methods GET is safest method because you are changing data on server. So by default spring enables CSRF on other methods but not on GET.
+Out of all REST methods GET is safest method because you are not changing data on server. So by default spring enables CSRF on other methods but not on GET.
 
-In Security config below thing is main - 
-   @Bean
+In Security config below thing is main -
+@Bean
 
-&nbsp;   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-&nbsp;       httpSecurity.csrf(customizer -> customizer.disable())
+        httpSecurity.csrf(customizer -> customizer.disable())
 
-&nbsp;           .authorizeHttpRequests(request->request.
+            .authorizeHttpRequests(request->request.
 
-&nbsp;                   requestMatchers("/auth/\*\*").permitAll().
+                    requestMatchers("/auth/\*\*").permitAll().
 
-&nbsp;                   anyRequest().authenticated())
+                    anyRequest().authenticated())
 
-&nbsp;           .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-&nbsp;           .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
-&nbsp;       return httpSecurity.build();
+        return httpSecurity.build();
 
-&nbsp;   }
+    }
 flow:
-			So each and every request goes filter chain
+So each and every request goes filter chain
 
-&nbsp;						↓
+ 						↓
 
-&nbsp;			jwtFilter class activates and do filter for request.
+ 			jwtFilter class activates and do filter for request.
 
-&nbsp;						↓
+ 						↓
 
-&nbsp;		-----------------------------------------------------------------
+ 		-----------------------------------------------------------------
 
-&nbsp;		↓								↓
+ 		↓								↓
 
 auth/login or auth/register						Any other request
 
-&nbsp;		↓								↓					
+ 		↓								↓
 
-JwtFilter will get called but					JwtFilter will get called and will check headers if everything is fine it	
+JwtFilter will get called but					JwtFilter will get called and will check headers if everything is fine it
 
 will do nothing. No Security context.				will validate token if token is valid it will set context again call will come to
 
-Again call will come to securityFilterChain			securityFilterChain it will now check if context with authrozed is there or not
+Again call will come to securityFilterChain			securityFilterChain it will now check if context with authorized is there or not
 
 but there logic is for request with /auth/\*\* it			if context is there it will pass.
 
@@ -71,15 +71,15 @@ It works by intercepting requests using a chain of security filters before they 
 
 Client
 
-&nbsp; ↓
+  ↓
 
 Security Filter Chain  ← Spring Security
 
-&nbsp; ↓
+  ↓
 
 DispatcherServlet
 
-&nbsp; ↓
+  ↓
 
 Controller
 
@@ -91,7 +91,7 @@ Note: Spring Security works at the filter level before Spring MVC.
 
 3\. What is SecurityFilterChain?
 
-curityFilterChain is an ordered collection of servlet filters where each filter performs a specific security responsibility such as authentication, authorization, exception handling, CSRF protection, etc.
+SecurityFilterChain is an ordered collection of servlet filters where each filter performs a specific security responsibility such as authentication, authorization, exception handling, CSRF protection, etc.
 
 Common filters you must know:
 
@@ -128,31 +128,31 @@ Authentication happens first, authorization happens after.
 
 POST /login
 
-&nbsp;  ↓
+   ↓
 
 UsernamePasswordAuthenticationFilter
 
-&nbsp;  ↓
+   ↓
 
 AuthenticationManager
 
-&nbsp;  ↓
+   ↓
 
 AuthenticationProvider
 
-&nbsp;  ↓
+   ↓
 
 UserDetailsService → Database
 
-&nbsp;  ↓
+   ↓
 
 PasswordEncoder.matches()
 
-&nbsp;  ↓
+   ↓
 
 Authentication Success
 
-&nbsp;  ↓
+   ↓
 
 SecurityContext updated
 
@@ -226,7 +226,7 @@ For stateless JWT APIs, CSRF is disabled.
 
 
 
-#### **🧾JWT Concept:** 
+#### **🧾JWT Concept:**
 
 JWT is a digitally signed token that proves the identity of a user for a limited time.
 
@@ -234,7 +234,7 @@ JWT = User data + Expiry time + Digital Signature
 
 
 
-1️⃣ Encryption \& Decryption (Core Idea): 
+1️⃣ Encryption \& Decryption (Core Idea):
 
 Person A wants to send message: "My password is 1234"
 

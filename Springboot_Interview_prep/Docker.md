@@ -161,9 +161,29 @@ ENTRYPOINT \["java","-jar","app.jar"]
 
 Build: docker build -t quiz-app .
 
-
-
 Run: docker run -p 8080:8080 quiz-app
+
+Note: -p <port\_on\_your\_machine> : <port\_inside\_container/Tmcat\_port>
+
+Note: In docker build command if you dont specify full name of image then by default it would be 'docker.io/library/quiz-app:latest'
+
+img: <registry>/<repository>:<tag>
+
+The last . in build command means: “Use the current directory as the build context.”
+
+| Part                   | Value       |
+
+| ---------------------- | ----------- |
+
+| Part                   | Value       |
+
+| Registry               | `docker.io` |
+
+| Repository (namespace) | `library`   |
+
+| Image name             | `quiz-app`  |
+
+| Tag                    | `latest`    |
 
 
 
@@ -344,7 +364,7 @@ Note: Container shares kernel with host.
 
 **Docker Commands:** https://github.com/teluskoOrg/Docker-Source-Code/blob/main/Docker\_Commands.md
 
-Note: 
+Note:
 
 ✅**docker build** uses a Dockerfile and produces clean, repeatable images suitable for automation and production.
 
@@ -408,6 +428,8 @@ Then commands to create image and run container:
 docker build -t telusko/rest-demo:v2 .
 
 docker run -p 8081:8081 telusko/rest-demo:v2
+
+The last . means: “Use the current directory as the build context.”
 
 
 

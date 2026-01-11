@@ -119,15 +119,15 @@ Spring Boot → JPA → Hibernate → JDBC → Database
 
 | ---------------- | -------------------------- |
 
-| `\\\\\\\*\\\\\\\*SessionFactory\\\\\\\*\\\\\\\*` | Heavy, one per app         |
+| `SessionFactory` | Heavy, one per app         |
 
-| `\\\\\\\*\\\\\\\*Session\\\\\\\*\\\\\\\*`        | Lightweight, per request   |
+| `Session`        | Lightweight, per request   |
 
-| `\\\\\\\*\\\\\\\*Transaction\\\\\\\*\\\\\\\*`    | Commit / rollback          |
+| `Transaction`    | Commit / rollback          |
 
-| `\\\\\\\*\\\\\\\*Query\\\\\\\*\\\\\\\*`          | HQL/JPQL queries           |
+| `Query`          | HQL/JPQL queries           |
 
-| `\\\\\\\*\\\\\\\*Entity\\\\\\\*\\\\\\\*`         | Java class mapped to table |
+| `Entity`         | Java class mapped to table |
 
 
 
@@ -138,6 +138,8 @@ Spring Boot → JPA → Hibernate → JDBC → Database
 | JDBC             | Hibernate          |
 
 | ---------------- | ------------------ |
+
+
 
 | Manual SQL       | Auto-generated SQL |
 
@@ -749,11 +751,17 @@ With Spring Data JPA:
 
 
 
-##### <b>Pagination:</b>
+##### **Pagination:**
 
 
 
-<b>1) Core Concepts - </b>
+🧩 Why Pagination is needed?
+
+Suppose your database table has 1 million records.
+
+
+
+**1) Core Concepts -**
 
 Pageable: Encapsulates page, size, and sort.
 
@@ -775,47 +783,65 @@ Default indexing: page is 0-based. So page 0 is the first page.
 
 public class BookController {
 
-&nbsp;   private final BookRepository repo;
+    private final BookRepository repo;
 
 
 
-&nbsp;   public BookController(BookRepository repo) { this.repo = repo; }
+    public BookController(BookRepository repo) { this.repo = repo; }
 
 
 
-&nbsp;   // Approach A: Explicit params
+    // Approach A: Explicit params
 
-&nbsp;   @GetMapping
+    @GetMapping
 
-&nbsp;   public Page<Book> list(
+    public Page<Book> list(
 
-&nbsp;           @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "0") int page,
 
-&nbsp;           @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "10") int size,
 
-&nbsp;           @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "id") String sortBy,
 
-&nbsp;           @RequestParam(defaultValue = "asc") String direction) {
-
-
-
-&nbsp;       return service.getBooks(page, size, sortBy, direction);
-
-&nbsp;   }
+            @RequestParam(defaultValue = "asc") String direction) {
 
 
 
-&nbsp;   // Approach B: Inject pageable automatically (?page=0\&size=10\&sort=title,desc)
+        return service.getBooks(page, size, sortBy, direction);
 
-&nbsp;   @GetMapping("/search")
+    }
 
-&nbsp;   public Page<Book> byAuthor(@RequestParam String author,
 
-&nbsp;                              @PageableDefault(size = 5, sort = "title") Pageable pageable) {
 
-&nbsp;       return repo.findByAuthor(author, pageable);
+    // Approach B: Inject pageable automatically (?page=0\&size=10\&sort=title,desc)
 
-&nbsp;   }
+    @GetMapping("/search")
+
+    public Page<Book> byAuthor(@RequestParam String author,
+
+                               @PageableDefault(size = 5, sort = "title") Pageable pageable) {
+
+        return repo.findByAuthor(author, pageable);
+
+    }
+
+
+
+    // Infinite Scroll using Slice
+
+    @GetMapping("/slice")
+
+    public Slice<Product> getBooksSlice(
+
+            @RequestParam double minPrice,
+
+            @RequestParam int page,
+
+            @RequestParam int size) {
+
+        return service.getBooksSlice(minPrice, page, size);
+
+    }
 
 }
 
@@ -827,31 +853,41 @@ public class BookController {
 
 public class BookService {
 
-&nbsp;   private final BookRepository repo;
+    private final BookRepository repo;
 
 
 
-&nbsp;   public BookService(BookRepository repo) { this.repo = repo; }
+    public BookService(BookRepository repo) { this.repo = repo; }
+
+ 
+
+    public Page<Book> getBooks(int page, int size, String sortBy, String direction) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).descending());
+
+        return repo.findAll(pageable);
+
+    }
 
 
 
-&nbsp;   public Page<Book> getBooks(int page, int size, String sortBy, String direction) {
+    public Page<Book> getBooksByAuthor(String author, Pageable pageable) {
 
-&nbsp;       Sort sort = Sort.by(Sort.Direction.fromString(direction), sortBy);
+        return repo.findByAuthor(author, pageable);
 
-&nbsp;       Pageable pageable = PageRequest.of(page, size, sort);
-
-&nbsp;       return repo.findAll(pageable);
-
-&nbsp;   }
+    }
 
 
 
-&nbsp;   public Page<Book> getBooksByAuthor(String author, Pageable pageable) {
+    // SLICE
 
-&nbsp;       return repo.findByAuthor(author, pageable);
+    public Slice<Product> getBooksSlice(double minPrice, int page, int size) {
 
-&nbsp;   }
+        Pageable pageable = PageRequest.of(page, size, Sort.by("name"));
+
+        return repo.findByPriceGreaterThan(minPrice, pageable);
+
+    }
 
 }
 
@@ -861,11 +897,73 @@ public class BookService {
 
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-&nbsp;   Page<Book> findByAuthor(String author, Pageable pageable);
+    Page<Book> findByAuthor(String author, Pageable pageable);
+
+
+
+    Slice<Product> findByPriceGreaterThan(double price, Pageable pageable);
 
 }
 
 
 
 
+
+📦 Response contains:
+
+{
+
+  "content": \[ ... 5 users ... ],
+
+  "totalPages": 200,
+
+  "totalElements": 1000,
+
+  "size": 5,
+
+  "number": 0,
+
+  "first": true,
+
+  "last": false
+
+}
+
+
+
+📦 Slice Response:
+
+{
+
+  "content": \[ ... 5 products ... ],
+
+  "number": 0,
+
+  "size": 5,
+
+  "first": true,
+
+  "last": false,
+
+  "hasNext": true
+
+}
+
+
+
+
+
+
+
+What is difference between Page and Slice?
+
+Page → gives total count (slower)
+
+Slice → no total count (faster, good for infinite scroll)
+
+
+
+Where do you use Slice instead of Page?
+
+When building infinite scroll or very large datasets where total count is unnecessary and expensive. Slice avoids the COUNT query and improves performance.
 
