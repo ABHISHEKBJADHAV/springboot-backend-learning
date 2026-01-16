@@ -12,6 +12,8 @@ When base class has common code + common state, use abstract class.
 
 When only behavior contract is needed, use interface.
 
+Note: Abstract class can have Instance **variables** i.e public int a;   but Interface has only constants **public static final a=10;** This cannot be changed in child
+
 
 
 2\. Can an abstract class have constructors and non-abstract methods?
@@ -99,19 +101,19 @@ But they cannot have instance variables or constructors
 
 interface MyInterface {
 
-&nbsp;   default void show() {
+    default void show() {
 
-&nbsp;       System.out.println("Default method");
+        System.out.println("Default method");
 
-&nbsp;   }
+    }
 
 
 
-&nbsp;   static void display() {
+    static void display() {
 
-&nbsp;       System.out.println("Static method");
+        System.out.println("Static method");
 
-&nbsp;   }
+    }
 
 }
 
@@ -189,7 +191,7 @@ If interface contains a public static void main(String\[] args) method we can ru
 
 interface Main {
 
-    static void main(String[] args) {
+    static void main(String\[] args) {
 
         System.out.println("Main method inside interface");
 
@@ -299,9 +301,43 @@ Generic type information is removed at runtime.
 
 
 
-Q3. Difference between List<T> and List<?>?
+Q3. Difference between List<T> and List<?> ?
 
 List<T> is specific type; List<?> is unknown type.
+
+Example:
+
+<T> void copy(List<T> src, List<T> dest) {
+
+&nbsp;   for (T item : src) {
+
+&nbsp;       dest.add(item);
+
+&nbsp;   }
+
+}
+
+void print(List<?> list) {
+
+&nbsp;   for (Object o : list) {
+
+&nbsp;       System.out.println(o);
+
+&nbsp;   }
+
+}
+
+
+
+| Symbol | Meaning                     |
+
+| ------ | --------------------------- |
+
+| `T`    | A \*\*real type placeholder\*\* |
+
+| `?`    | \*\*Unknown type\*\*            |
+
+
 
 
 
@@ -431,7 +467,9 @@ Reduces object creation, improves readability, enables functional-style processi
 
 Answer:
 
-Lambda is converted into a private static method and invoked using invokedynamic instruction.
+Lambda is converted into a **private static method** and invoked using invokedynamic instruction.
+
+Static members as well as methods can be private in class, That means it can only be accessed from within the same class where it’s defined.
 
 
 
@@ -441,13 +479,18 @@ Answer:
 
 Only if the functional interface method declares it.
 
+
+
+
+
 Threads:-
 A Thread is a lightweight unit of execution.
 
 Multithreading allows multiple threads to run concurrently within a process, improving performance and CPU utilization.
 
 1. Difference between Process and Thread?
-   | Process     | Thread                |
+
+| Process     | Thread                |
 
 | ----------- | --------------------- |
 
@@ -458,6 +501,8 @@ Multithreading allows multiple threads to run concurrently within a process, imp
 | Slower      | Faster                |
 
 | Isolated    | Communicates easily   |
+
+
 
 2. How to create a thread in Java? Which is better?
 
@@ -475,11 +520,15 @@ Answer:
 
 Java supports single inheritance. Implementing Runnable allows class to extend other classes and separates task from thread.
 
+
+
 4. What is synchronization? Why needed?
 
 Answer:
 
 Synchronization prevents race conditions when multiple threads access shared resources.
+
+
 
 5. What is deadlock? How to prevent it?
 
