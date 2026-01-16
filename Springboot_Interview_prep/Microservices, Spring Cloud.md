@@ -54,13 +54,13 @@ Service Registry (Eureka)
 
      ↓
 
- ┌───────────┬────────────┬─────────────┐
+┌───────────┬────────────┬─────────────┐
 
- | Quiz Svc      | Question   	  | Auth Svc        |
+| Quiz Svc  | Question   | Auth Svc    |
 
- | (Spring)  	 | Service    	  | (JWT)           |
+| (Spring)  | Service    | (JWT)       |
 
- └───────────┴────────────┴─────────────┘
+└───────────┴────────────┴─────────────┘
 
      ↓              ↓             ↓
 
@@ -290,9 +290,9 @@ public interface QuestionClient {
 
 
 
-&nbsp;   @GetMapping("/questions/{id}")
+    @GetMapping("/questions/{id}")
 
-&nbsp;   Question getQuestion(@PathVariable int id);
+    Question getQuestion(@PathVariable int id);
 
 }
 
