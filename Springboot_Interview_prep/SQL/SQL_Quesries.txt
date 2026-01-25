@@ -1,0 +1,41 @@
+INSERT INTO students (id, name, age, department)
+VALUES (1, 'Rahul', 21, 'IT');
+
+SELECT * FROM students;
+
+UPDATE students
+SET department = 'Data Science'
+WHERE id = 1;
+
+DELETE FROM students
+WHERE id = 3;
+
+
+
+🔹 SELECT + WHERE:
+SELECT * FROM students WHERE age > 20;
+
+🔹 ORDER BY:
+SELECT * FROM students ORDER BY name ASC;
+
+🔹 LIMIT / OFFSET (pagination):
+SELECT name FROM students ORDER BY name LIMIT 2 OFFSET 1;
+
+🔹 LIKE:
+SELECT * FROM students WHERE name LIKE 'A%';
+
+🔹 IN / BETWEEN:
+SELECT * FROM students WHERE grade IN ('A','B');
+
+🔹 GROUP BY + HAVING (VERY IMPORTANT):
+SELECT department, COUNT(*)
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 5;
+
+Interview trap:
+❌ WHERE COUNT(*) > 5 → wrong
+✅ HAVING COUNT(*) > 5
+
+
+SELECT name FROM students ORDER BY name LIMIT (SELECT COUNT(*) - 2 FROM students) OFFSET 1;

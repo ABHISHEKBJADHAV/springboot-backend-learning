@@ -116,6 +116,14 @@ Client
 
 
 
+* PATCH → Partial update. More efficient than PUT. Updates only specific fields, not the full object.
+* HEAD → Headers only, no body. Same as GET, but returns Only headers NO response body. Used to check: If resource exists, Last modified time, Server availability etc.
+* OPTIONS → Check allowed HTTP methods / CORS
+
+
+
+
+
 ###### **🌐 What is Spring MVC?**
 
 Spring MVC is a framework to build web applications using the Model–View–Controller design pattern.
@@ -131,6 +139,43 @@ Spring MVC is a framework to build web applications using the Model–View–Con
 | View       | UI (HTML, JSP, Thymeleaf, JSON) |
 
 | Controller | Handles request \& response      |
+
+
+
+
+
+Do we still use MVC today?
+
+Yes — but not in the old, strict way.
+
+
+
+Classic MVC mapping:
+
+* Model → Entities / DTOs
+* View → Earlier: JSP/Thymeleaf
+* Controller → @Controller, @RestController
+
+
+
+
+
+What changed?
+
+Today:
+
+* View is NOT in backend
+* Backend exposes REST APIs
+* Frontend (Angular) handles UI
+
+
+
+So it becomes:
+
+* Backend = M + C
+* Frontend = V
+
+
 
 
 

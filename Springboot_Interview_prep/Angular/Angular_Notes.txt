@@ -1,0 +1,29 @@
+Observable:
+
+An Observable is a way to handle asynchronous data streams — data that arrives over time, not all at once.
+
+Observable vs Promise (key difference):
+
+| Feature                 | Observable         | Promise     |
+| ----------------------- | ------------------ | ----------- |
+| Values                  | Multiple           | Single      |
+| Lazy execution          | ✅                 | ❌         |
+| Cancelable              | ✅ (unsubscribe)   | ❌         |
+| Operators               | map, filter, retry | then, catch |
+| Used heavily in Angular | ✅                 | ❌         |
+
+👉 Promise = one-time result
+👉 Observable = continuous stream
+
+
+
+Think of authentication as two layers:
+| Layer                         | Responsibility                                     |
+| ----------------------------- | -------------------------------------------------- |
+| **Angular (Frontend)**        | UI access control (who can see which page)         |
+| **Spring Security (Backend)** | API access control (who can access which endpoint) |
+
+👉 Angular Auth Guard ≠ Security
+👉 Spring Security = Real Security
+
+Angular prevents navigation, Spring prevents API access.

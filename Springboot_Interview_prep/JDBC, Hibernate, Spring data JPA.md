@@ -217,6 +217,32 @@ Ensures ACID properties. Uses commit() and rollback().
 
 
 
+
+
+Spring Bean Scopes (important):
+
+
+
+| Scope                   | Meaning                                   |
+
+| ----------------------- | ----------------------------------------- |
+
+| singleton (default)     | One object per Spring container           |
+
+| prototype               | New object \*\*every time\*\* it is requested |
+
+| request                 | One object per HTTP request               |
+
+| session                 | One object per HTTP session               |
+
+| application             | One object per ServletContext             |
+
+
+
+
+
+
+
 ###### **🔁 What is Transaction?**
 
 

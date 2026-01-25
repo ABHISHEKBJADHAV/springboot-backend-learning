@@ -1,0 +1,41 @@
+INNER JOIN:
+➡️Returns rows only when data exists in both TableA and TableB
+
+SELECT *
+FROM TableA
+INNER JOIN TableB
+ON TableA.id = TableB.id;
+
+
+LEFT JOIN: 
+➡️ Returns all rows from TableA
+➡️ If no match in TableB → values will be NULL
+
+SELECT *
+FROM TableA
+LEFT JOIN TableB
+ON TableA.id = TableB.id;
+
+
+RIGHT JOIN:
+➡️ Returns all rows from TableB
+➡️ If no match in TableA → values will be NULL
+
+SELECT *
+FROM TableA
+RIGHT JOIN TableB
+ON TableA.id = TableB.id;
+
+
+FULL JOIN:
+SELECT *
+FROM TableA
+FULL JOIN TableB
+ON TableA.id = TableB.id;
+
+➡️ Returns all rows from both tables
+➡️ Matching rows are merged
+➡️ Non-matching rows contain NULL
+
+
+

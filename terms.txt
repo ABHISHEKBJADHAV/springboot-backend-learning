@@ -157,3 +157,14 @@ Then question-service and quizz-service will use Eureka client so they will be c
 Feign client - Will take care about load balancing
 Api gateway
 
+
+Swagger is a toolset for designing, documenting, and testing REST APIs.
+Swagger follows the OpenAPI standard
+
+1️⃣ API Documentation (Auto-generated)
+Swagger creates clear documentation showing:
+API endpoints (/users, /login)
+HTTP methods (GET, POST, PUT, DELETE)
+Request parameters & body
+Response structure and status codes
+
